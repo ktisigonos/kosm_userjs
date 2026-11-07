@@ -1,0 +1,17 @@
+.{
+    .name = .kosm_userjs,
+    .version = "0.0.0",
+    .fingerprint = 0x87cd3280ef695b7f, // Changing this has security and trust implications.
+    .minimum_zig_version = "0.17.0",
+    .dependencies = .{
+        .kosm = .{ .path = "../.." },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "root.zig",
+        "adapter.zig",
+        "parser.zig",
+        "README.md",
+    },
+}
