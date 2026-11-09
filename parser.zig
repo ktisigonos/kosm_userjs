@@ -1,4 +1,4 @@
-//! Reads a `user.js` into the tree kosm matches paths against (D40, D96): every
+//! Reads a `user.js` into the tree kosm matches paths against: every
 //! `user_pref("name", value);` statement is one entry of the file's table, keyed by the pref's
 //! whole name as spelled between its quotes. A value's bytes are its literal, quotes included.
 //! `//`, `/* */` and `#` comments are skipped, as Firefox skips them.

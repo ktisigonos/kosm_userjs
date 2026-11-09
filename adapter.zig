@@ -1,12 +1,12 @@
-//! Firefox's `user.js` (D96): one `user_pref("name", value);` line per pref. A pref holds a
+//! Firefox's `user.js`: one `user_pref("name", value);` line per pref. A pref holds a
 //! bool, a 32-bit integer or a string, so a color or a joined value is written as a string and a
-//! float is refused (G6). Prefs are flat: a table's entries are prefs named by their whole name.
+//! float is refused. Prefs are flat: a table's entries are prefs named by their whole name.
 
 const std = @import("std");
 const kosm = @import("kosm");
 const parser = @import("parser.zig");
 
-/// The adapter for `user.js` files; enables `generate`, `block` (D71) and `edit`. It claims no
+/// The adapter for `user.js` files; enables `generate`, `block` and `edit`. It claims no
 /// extension, since `.js` is JavaScript: apps pass `.lang = "userjs"`.
 pub const adapter: kosm.Adapter = .{
     .name = "userjs",
@@ -31,7 +31,7 @@ fn serialize(writer: *std.Io.Writer, root: kosm.Value, context: *kosm.Adapter.Co
     }
 }
 
-/// Writes one value; with `parser`, enables `edit` (D42).
+/// Writes one value; with `parser`, enables `edit`.
 fn format(writer: *std.Io.Writer, value: kosm.Value, context: *kosm.Adapter.Context) kosm.Adapter.Error!void {
     try writeValue(writer, "value", value, context);
 }
@@ -60,7 +60,7 @@ fn writeValue(writer: *std.Io.Writer, name: []const u8, value: kosm.Value, conte
     }
 }
 
-/// A value's text inside a string: parts of a joined value are written back to back (D89).
+/// A value's text inside a string: parts of a joined value are written back to back.
 fn writePlain(writer: *std.Io.Writer, name: []const u8, value: kosm.Value, context: *kosm.Adapter.Context) kosm.Adapter.Error!void {
     switch (value) {
         .string, .raw => |text| try writer.writeAll(text),

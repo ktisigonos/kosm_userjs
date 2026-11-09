@@ -1,4 +1,4 @@
-//! Firefox's user.js: the `userjs` adapter, for Firefox and the browsers built on it (D96).
+//! Firefox's user.js: the `userjs` adapter, for Firefox and the browsers built on it.
 
 const std = @import("std");
 
